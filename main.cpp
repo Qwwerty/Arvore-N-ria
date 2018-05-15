@@ -25,7 +25,7 @@ PONT criarNovoNo(TIPOCHAVE ch){
     PONT novo = (PONT)malloc(sizeof(NO));
     novo->primFilho = NULL;
     novo->proxIrmao = NULL;
-    novo->chave ch;
+    novo->chave  = ch;
     return(novo);
 }
 
@@ -40,6 +40,17 @@ bool insere(PONT raiz, TIPOCHAVE novaChave, TIPOCHAVE chavePai){
         p = p ->proxIrmao;
     }
     return(true);
+}
+
+void exibirArvore(PONT raiz){
+    if(raiz == NULL) return;
+    printf("%d(", raiz->chave);
+    PONT p = raiz->primFilho;
+    while(p){
+        exibirArvore(p);
+        p = p->proxIrmao;
+    }
+    printf(")");
 }
 
 
